@@ -11,8 +11,28 @@ config_version=5
 [application]
 
 config/name="Lunch Lady TD"
+run/main_scene="uid://cu0xds7yc0gtj"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Helpers="*res://Scripts/Globals/helpers.gd"
+CashManager="*res://Scripts/Globals/cash_manager.gd"
+SignalBus="*res://Scripts/Globals/signal_bus.gd"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+
+[layer_names]
+
+3d_physics/layer_1="ground"
+3d_physics/layer_2="path"
+3d_physics/layer_3="towers"
+3d_physics/layer_4="attacks"
+3d_physics/layer_5="enemies"
 
 [rendering]
 

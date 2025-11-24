@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bphmbyuj7vcc0"
-path="res://.godot/imported/EnemyPlaceholder.fbx-5a9b734c94808f3b56e351e9d4ed7114.scn"
+uid="uid://l33a8j6qmet1"
+path="res://.godot/imported/PathPlaceholder.fbx-149020e248cb2c7427e9560cfcd6c083.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Placeholders/EnemyPlaceholder.fbx"
-dest_files=["res://.godot/imported/EnemyPlaceholder.fbx-5a9b734c94808f3b56e351e9d4ed7114.scn"]
+source_file="res://Assets/Models/Placeholders/PathPlaceholder.fbx"
+dest_files=["res://.godot/imported/PathPlaceholder.fbx-149020e248cb2c7427e9560cfcd6c083.scn"]
 
 [params]
 

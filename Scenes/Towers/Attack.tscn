@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2l0w28ciippw"]
+
+[ext_resource type="Script" uid="uid://6fssawtwddyh" path="res://Scripts/Attacks/attack.gd" id="1_ceb3x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x47ek"]
+albedo_color = Color(0.74509805, 0.2901961, 0.18431373, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ceb3x"]
+material = SubResource("StandardMaterial3D_x47ek")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_x47ek"]
+
+[node name="Attack" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_ceb3x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ceb3x")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("SphereShape3D_x47ek")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://yl1jmgq7qjwl"]
+
+[ext_resource type="PackedScene" uid="uid://bd11r1rvpv767" path="res://Assets/Models/Placeholders/TowerPlaceholder.fbx" id="1_x50x0"]
+
+[node name="FoodStation" type="CharacterBody3D"]
+
+[node name="TowerPlaceholder" parent="." instance=ExtResource("1_x50x0")]

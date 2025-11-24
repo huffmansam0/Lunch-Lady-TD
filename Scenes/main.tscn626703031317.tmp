@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu0xds7yc0gtj"]
+
+[ext_resource type="Script" uid="uid://b2b5dkmvpy673" path="res://Scripts/main.gd" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://cywnyq2uvr52w" path="res://Scenes/Stages/Cafeteria.tscn" id="2_bo1nx"]
+[ext_resource type="Script" uid="uid://dfgar5s0i25bw" path="res://Scripts/UI/game_gui.gd" id="3_8gbba"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_jjgbg")
+cafeteria_scene = ExtResource("2_bo1nx")
+
+[node name="LevelContainer" type="Node3D" parent="."]
+
+[node name="GameGUI" type="CanvasLayer" parent="."]
+script = ExtResource("3_8gbba")
+
+[node name="CashLabel" type="Label" parent="GameGUI"]
+offset_left = 23.0
+offset_top = 20.0
+offset_right = 88.0
+offset_bottom = 43.0
+text = "Cash: 10"
+
+[node name="Button" type="Button" parent="GameGUI"]
+offset_left = 1395.0
+offset_top = 793.0
+offset_right = 1574.0
+offset_bottom = 874.0
+text = "START WAVE"
