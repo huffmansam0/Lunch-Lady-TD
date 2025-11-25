@@ -1,20 +1,49 @@
-[gd_scene load_steps=8 format=3 uid="uid://cywnyq2uvr52w"]
+[gd_scene load_steps=9 format=3 uid="uid://cywnyq2uvr52w"]
 
 [ext_resource type="PackedScene" uid="uid://b7d0ing22tk76" path="res://Scenes/Stage Components/Map.tscn" id="1_mr3pu"]
 [ext_resource type="Script" uid="uid://c2o7xv7y4cg6g" path="res://Scripts/Stages/cafeteria.gd" id="1_ym4ms"]
 [ext_resource type="PackedScene" uid="uid://gcxkkbchxwf3" path="res://Scenes/Towers/Lunch_Lady.tscn" id="2_3qwnd"]
+[ext_resource type="VoxelGIData" uid="uid://ds68p6enjc7cb" path="res://Scenes/Stages/Cafeteria.VoxelGI_data.res" id="3_u6ket"]
 [ext_resource type="Script" uid="uid://crqi2rtd3guna" path="res://Scripts/Stages/enemy_spawner.gd" id="4_ym4ms"]
 [ext_resource type="PackedScene" uid="uid://d11naeggrl6hs" path="res://Scenes/Stage Components/Path.tscn" id="5_3qwnd"]
 
 [sub_resource type="Environment" id="Environment_mr3pu"]
 background_mode = 2
-ambient_light_source = 3
+ambient_light_color = Color(0.43866676, 0.3441869, 0.21891761, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 2.3
+tonemap_mode = 2
+tonemap_exposure = 0.47
+tonemap_white = 1.29
+ssao_radius = 1.95
+ssao_intensity = 1.09
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+sdfgi_min_cell_size = 0.5125
+fog_mode = 1
+fog_light_energy = 1.84
+fog_sun_scatter = 0.57
+fog_density = 1.0
+fog_aerial_perspective = 0.651
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0002
+volumetric_fog_emission_energy = 4.85
+volumetric_fog_gi_inject = 3.98
+volumetric_fog_anisotropy = -0.78
+volumetric_fog_length = 183.02
+volumetric_fog_sky_affect = 0.0
 
 [sub_resource type="MeshLibrary" id="MeshLibrary_mr3pu"]
 
 [node name="Cafeteria" type="Node3D"]
 script = ExtResource("1_ym4ms")
 tower_scene = ExtResource("2_3qwnd")
+
+[node name="VoxelGI" type="VoxelGI" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2845783, 5.025647)
+size = Vector3(36.765, 42.18, 53.085)
+data = ExtResource("3_u6ket")
 
 [node name="MapFootprint" parent="." instance=ExtResource("1_mr3pu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -26,17 +55,303 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 environment = SubResource("Environment_mr3pu")
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0.64811987, -0.7615383, 0, 0.7615383, 0.64811987, 1, 2.833022e-08, -3.3287897e-08, -25.204174, 20.858067, 0)
-projection = 1
+transform = Transform3D(-4.371139e-08, 0.64811987, -0.7615383, 0, 0.7615383, 0.64811987, 1, 2.833022e-08, -3.3287897e-08, -42.084, 35.613, 1.445)
 current = true
-fov = 27.6
+fov = 15.7
 size = 16.195
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0.5, -0.8660254, 0, 0.8660254, 0.5, 1, 2.1855694e-08, -3.7855173e-08, -11.364964, 10, 0)
+near = 0.333
 
 [node name="EnemySpawner" type="Node" parent="."]
 script = ExtResource("4_ym4ms")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = SubResource("MeshLibrary_mr3pu")
+
+[node name="OverheadLight_01" type="SpotLight3D" parent="."]
+transform = Transform3D(-1, 8.792237e-08, -8.7650704e-08, -8.864677e-08, -0.011393614, 0.9999351, 8.691801e-08, 0.9999351, 0.011393614, 6.510145, 7.967239, -5.2802944)
+light_color = Color(0.895598, 0.95757073, 0.90953267, 1)
+light_energy = 8.0
+light_indirect_energy = 2.353
+light_volumetric_fog_energy = 10.372
+light_size = 12.005
+light_bake_mode = 1
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 0.0
+distance_fade_length = 179.16
+spot_range = 33.425
+spot_attenuation = 1.05
+spot_angle = 52.5
+spot_angle_attenuation = 1.1486958
+
+[node name="OverheadLight_02" type="SpotLight3D" parent="OverheadLight_01"]
+transform = Transform3D(1, 0, 5.551115e-15, 0, 1, 0, -1.5543122e-15, 0, 1, 6.902034, -0.03009653, -0.0008292198)
+light_color = Color(0.8756733, 0.9618233, 0.92998254, 1)
+light_energy = 8.0
+light_indirect_energy = 2.353
+light_volumetric_fog_energy = 10.372
+light_size = 12.005
+light_bake_mode = 1
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 0.0
+distance_fade_length = 179.16
+spot_range = 33.425
+spot_attenuation = 1.05
+spot_angle = 60.26
+spot_angle_attenuation = 1.1486958
+
+[node name="OverheadLight_03" type="SpotLight3D" parent="OverheadLight_01/OverheadLight_02"]
+transform = Transform3D(1, 8.742276e-08, 8.742279e-08, -8.742277e-08, 1, 8.754432e-08, -8.742277e-08, -8.754432e-08, 1, 6.9949703, -0.0886755, -0.03609228)
+light_color = Color(0.86964655, 0.9640693, 0.9287326, 1)
+light_energy = 8.0
+light_indirect_energy = 2.353
+light_volumetric_fog_energy = 10.372
+light_size = 12.005
+light_bake_mode = 1
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 0.0
+distance_fade_length = 179.16
+spot_range = 33.425
+spot_attenuation = 1.05
+spot_angle = 63.78
+spot_angle_attenuation = 1.1486958
+
+[node name="OverheadLight_04" type="SpotLight3D" parent="OverheadLight_01/OverheadLight_02/OverheadLight_03"]
+transform = Transform3D(1, -8.7202565e-08, -1.7534272e-07, 8.664764e-08, 0.999995, -0.003162316, 1.7561761e-07, 0.003162316, 0.999995, -13.284068, 9.598572, -0.2682004)
+light_color = Color(0.8972001, 0.95628315, 0.9148322, 1)
+light_energy = 8.0
+light_indirect_energy = 2.353
+light_volumetric_fog_energy = 10.372
+light_size = 12.005
+light_bake_mode = 1
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 0.0
+distance_fade_length = 179.16
+spot_range = 33.425
+spot_attenuation = 1.05
+spot_angle = 66.52
+spot_angle_attenuation = 1.1486958
+
+[node name="OverheadLight_05" type="SpotLight3D" parent="OverheadLight_01/OverheadLight_02/OverheadLight_03/OverheadLight_04"]
+transform = Transform3D(1, 7.1054274e-15, 5.551115e-17, 0, 1, 0, 0, 0, 1, 6.902034, -0.21051121, -0.060389042)
+light_color = Color(0.8863918, 0.95937103, 0.9204765, 1)
+light_energy = 8.0
+light_indirect_energy = 2.353
+light_volumetric_fog_energy = 10.372
+light_size = 12.005
+light_bake_mode = 1
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 0.0
+distance_fade_length = 179.16
+spot_range = 33.425
+spot_attenuation = 1.05
+spot_angle = 68.75
+spot_angle_attenuation = 1.1486958
+
+[node name="OverheadLight_06" type="SpotLight3D" parent="OverheadLight_01/OverheadLight_02/OverheadLight_03/OverheadLight_04/OverheadLight_05"]
+transform = Transform3D(1, 8.742279e-08, 8.7422805e-08, -8.742279e-08, 1, 8.6613e-08, -8.74228e-08, -8.6613e-08, 1, 6.7139845, -0.045646667, 0.100020885)
+light_color = Color(0.8869036, 0.9577299, 0.93115366, 1)
+light_energy = 8.0
+light_indirect_energy = 2.353
+light_volumetric_fog_energy = 10.372
+light_size = 12.005
+light_bake_mode = 1
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 0.0
+distance_fade_length = 179.16
+spot_range = 33.425
+spot_attenuation = 1.05
+spot_angle = 69.65
+spot_angle_attenuation = 1.1486958
+
+[node name="OverheadLight_07" type="SpotLight3D" parent="OverheadLight_01/OverheadLight_02/OverheadLight_03/OverheadLight_04/OverheadLight_05/OverheadLight_06"]
+transform = Transform3D(1, -8.720259e-08, -1.7534278e-07, 8.664767e-08, 0.99999505, -0.0031623165, 1.7561766e-07, 0.0031623165, 0.99999505, -13.305342, 10.213629, -0.61254406)
+light_color = Color(0.89221746, 0.95508915, 0.9365514, 1)
+light_energy = 8.0
+light_indirect_energy = 2.353
+light_volumetric_fog_energy = 10.372
+light_size = 12.005
+light_bake_mode = 1
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 0.0
+distance_fade_length = 179.16
+spot_range = 33.425
+spot_attenuation = 1.05
+spot_angle = 67.3
+spot_angle_attenuation = 1.1486958
+
+[node name="OverheadLight_08" type="SpotLight3D" parent="OverheadLight_01/OverheadLight_02/OverheadLight_03/OverheadLight_04/OverheadLight_05/OverheadLight_06/OverheadLight_07"]
+transform = Transform3D(1, 1.4210855e-14, 4.002354e-14, 0, 1.0000001, 1.3969839e-09, -3.827494e-14, -1.3969839e-09, 1.0000001, 5.8744154, -0.21050835, -0.060388565)
+light_color = Color(0.9035036, 0.9539433, 0.9152597, 1)
+light_energy = 8.0
+light_indirect_energy = 2.353
+light_volumetric_fog_energy = 10.372
+light_size = 12.005
+light_bake_mode = 1
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 0.0
+distance_fade_length = 179.16
+spot_range = 33.425
+spot_attenuation = 1.05
+spot_angle = 66.65
+spot_angle_attenuation = 1.1486958
+
+[node name="OverheadLight_09" type="SpotLight3D" parent="OverheadLight_01/OverheadLight_02/OverheadLight_03/OverheadLight_04/OverheadLight_05/OverheadLight_06/OverheadLight_07/OverheadLight_08"]
+transform = Transform3D(1, 8.742279e-08, 8.742279e-08, -8.742279e-08, 1.0000001, 8.754432e-08, -8.742278e-08, -8.754432e-08, 1.0000001, 6.159583, -0.045650482, 0.10002136)
+light_color = Color(0.8873442, 0.9560725, 0.9419372, 1)
+light_energy = 8.0
+light_indirect_energy = 2.353
+light_volumetric_fog_energy = 10.372
+light_size = 12.005
+light_bake_mode = 1
+shadow_enabled = true
+shadow_blur = 2.0
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 0.0
+distance_fade_length = 179.16
+spot_range = 33.425
+spot_attenuation = 1.05
+spot_angle = 69.26
+spot_angle_attenuation = 1.1486958
+
+[node name="WindowLight_01" type="SpotLight3D" parent="."]
+transform = Transform3D(-1, -1.2434498e-14, -1.5099579e-07, -3.4243932e-08, 0.97394437, 0.2267873, 1.4706148e-07, 0.2267873, -0.97394437, -7.346085, 7.501724, -37.40713)
+light_color = Color(1, 0.92156863, 0.87058824, 1)
+light_energy = 8000.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 21.892
+light_size = 12.005
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 1.043
+shadow_blur = 0.304
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 0.0
+distance_fade_length = 170.26
+spot_range = 132.098
+spot_attenuation = 1.75
+spot_angle = 3.13
+spot_angle_attenuation = 1.1095738
+
+[node name="WindowLight_02" type="SpotLight3D" parent="WindowLight_01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5356498, 0, 0)
+light_color = Color(1, 0.92156863, 0.87058824, 1)
+light_energy = 8000.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 21.892
+light_size = 12.005
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 1.043
+shadow_blur = 0.304
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 0.0
+distance_fade_length = 170.26
+spot_range = 132.098
+spot_attenuation = 1.75
+spot_angle = 3.13
+spot_angle_attenuation = 1.1095738
+
+[node name="WindowLight_03" type="SpotLight3D" parent="WindowLight_01/WindowLight_02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5462184, 0, 0)
+light_color = Color(1, 0.92156863, 0.87058824, 1)
+light_energy = 8000.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 21.892
+light_size = 12.005
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 1.043
+shadow_blur = 0.304
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 0.0
+distance_fade_length = 170.26
+spot_range = 132.098
+spot_attenuation = 1.75
+spot_angle = 3.13
+spot_angle_attenuation = 1.1095738
+
+[node name="WindowLight_04" type="SpotLight3D" parent="WindowLight_01/WindowLight_02/WindowLight_03"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5012755, 9.536743e-07, -1.1444092e-05)
+light_color = Color(1, 0.92156863, 0.87058824, 1)
+light_energy = 8000.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 21.892
+light_size = 12.005
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 1.043
+shadow_blur = 0.304
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 0.0
+distance_fade_length = 170.26
+spot_range = 132.098
+spot_attenuation = 1.75
+spot_angle = 3.13
+spot_angle_attenuation = 1.1095738
+
+[node name="WindowLight_05" type="SpotLight3D" parent="WindowLight_01/WindowLight_02/WindowLight_03/WindowLight_04"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39814, 0, 0)
+light_color = Color(1, 0.92156863, 0.87058824, 1)
+light_energy = 8000.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 21.892
+light_size = 12.005
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 1.043
+shadow_blur = 0.304
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 0.0
+distance_fade_length = 170.26
+spot_range = 132.098
+spot_attenuation = 1.75
+spot_angle = 3.13
+spot_angle_attenuation = 1.1095738
+
+[node name="WindowLight_06" type="SpotLight3D" parent="WindowLight_01/WindowLight_02/WindowLight_03/WindowLight_04/WindowLight_05"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6000538, -1.9073486e-06, 7.6293945e-06)
+light_color = Color(1, 0.92156863, 0.87058824, 1)
+light_energy = 8000.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 21.892
+light_size = 12.005
+light_bake_mode = 1
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 1.043
+shadow_blur = 0.304
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 0.0
+distance_fade_length = 170.26
+spot_range = 132.098
+spot_attenuation = 1.75
+spot_angle = 3.13
+spot_angle_attenuation = 1.1095738
